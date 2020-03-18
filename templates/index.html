@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block body %}
+        <h1>Login page</h1>
+        <p>Please login or create a new user.</p>
+        <form action="{{ url_for('login') }}" method="post">
+            <div class="form-group">
+
+                <div class="col-auto">
+                    <label for="name">User</label>
+                    <input class="form-control" id="name" name="name" type="text" placeholder="User">
+                </div>
+
+                <div class="col-auto">
+                    <label for="password">Password</label>
+                    <input  class="form-control" id="password" name="password" type="password" placeholder="Password">
+                </div>
+
+                <div class="col-auto">
+                    <input type="submit" value="Login!" class="btn btn-primary">
+                </div>
+
+            </div>
+        </form>
+        <p>OR</p>
+        <form action="{{ url_for('register') }}" method="get">
+            <div class="form-group">
+                
+                <div class="col-auto">
+                    <input type="submit" value="Register" class="btn btn-secondary">
+                </div>
+
+            </div>
+        </form>
+{% endblock %}

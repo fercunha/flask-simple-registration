@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block body %}
+        <h1>Registration page</h1>
+        {% if name %}
+        <p>Welcome {{ name }}!</p>
+        {% endif %}
+{% endblock %}
