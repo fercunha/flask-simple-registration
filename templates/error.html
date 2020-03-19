@@ -1,12 +1,12 @@
 {% extends "layout.html" %}
 
 {% block title %}
-    Success
+    Fail
 {% endblock %}
 
 {% block body %}
-        <h1>Success!</h1>
-        <div class="alert alert-success" role="alert">
+        <h1>Sorry, something went wrong...</h1>
+        <div class="alert alert-danger" role="alert">
             {{ message }}
           </div>
 {% endblock %}
