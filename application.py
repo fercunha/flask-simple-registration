@@ -33,8 +33,29 @@ def register():
         name = request.form.get("name")
         lastname = request.form.get("lastname")
         username = request.form.get("username")
-        # checkusername = mydb.db.execute("SELECT * FROM users").fetchone()
         password = request.form.get("password")
+
+        #Check if username already exists
+        print(f"Checking if user {username} exists.")
+        if mydb.db.execute("SELECT * FROM users WHERE username = :username", {"username": username}).rowcount == 0:
+                print(f"User {username} is available.")
+        else:
+            message = "User " + username + " has already been picked."
+            print(message)
+            return render_template("error.html", message=message), 409
+        # try:
+        #     if mydb.db.execute("SELECT * FROM users WHERE username = :username", {"username": username}).rowcount == 0:
+        #         print(f"User {username} is available.")
+        #     else:
+        #         message = "User " + username + " already picked."
+        #         print(message)
+        #         return render_template("error.html", message=message), 409
+        # except:
+        #     return render_template("error.html", message='Error connecting to the database.'), 500
+            
+        
+
+
         try:
             registration_date = datetime.datetime.now()
             print(registration_date)
