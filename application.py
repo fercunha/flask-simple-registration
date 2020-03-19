@@ -13,7 +13,7 @@ def main():
 def index():
     return render_template("index.html")
 
-@app.route("/login")
+@app.route("/login", methods=["POST"])
 def login():
     return 'OK', 200
     
@@ -22,19 +22,27 @@ def register():
     """Creates the user"""
 
     if request.method == "GET":
-        return render_template("register.html")
-
-    #Gets form information
-    if request.form.get("name"):
-        name = request.form.get("name")
-        print(name)
+        if request.form.get("user"):
+            name = request.form.get("user")
+            return render_template("register.html", name=name)
+        else:
+            return render_template("register.html")
     else:
-        name = None
-    if request.form.get("password"):
-        password = request.form.get("password")
-        print(password)
-    
-    return render_template("register.html", name=name)
+        #Gets form information
+        if request.form.get("firstName"):
+            firstName = request.form.get("firstName")
+            print(firstName)
+        if request.form.get("lastName"):
+            lastName = request.form.get("lastName")
+            print(lastName)
+        if request.form.get("user"):
+            name = request.form.get("user")
+            print(name)
+        if request.form.get("password"):
+            password = request.form.get("password")
+            print(password)
+
+        return render_template("success.html")
 
 if __name__ == "__main__":
     main()

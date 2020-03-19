@@ -15,6 +15,7 @@ def create():
        Column('id', Integer, primary_key = True), 
        Column('name', String), 
        Column('lastname', String),
+       Column('user', String),
        Column('password', String),
        Column('registration_date', DateTime(timezone=False))
     )
