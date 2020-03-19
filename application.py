@@ -16,11 +16,20 @@ def index():
 
 @app.route("/login", methods=["POST"])
 def login():
-    return 'OK', 200
+    username = request.form.get("username")
+    password = request.form.get("password")
+
+    if mydb.db.execute("SELECT * FROM users WHERE username = :username AND password = :password",
+        {"username": username, "password": password}).rowcount == 1:
+        return render_template("success.html", message='Login successful!')
+    else:
+        return render_template("error.html", message='Wrong username or password'), 403
     
 @app.route("/register", methods=["POST", "GET"])
 def register():
     """Creates the user"""
+    #TODO Check if all form fields are being sent in the front-end
+    #TODO Return to login page or open app console
 
     if request.method == "GET":
         if request.form.get("username"):
@@ -52,9 +61,6 @@ def register():
         #         return render_template("error.html", message=message), 409
         # except:
         #     return render_template("error.html", message='Error connecting to the database.'), 500
-            
-        
-
 
         try:
             registration_date = datetime.datetime.now()
