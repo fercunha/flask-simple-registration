@@ -1,13 +1,22 @@
 import os
-
 from flask import Flask, render_template, request
+import mydb
+
+mydb.create()
 
 app = Flask(__name__)
 
+def main():
+    pass
+
 @app.route("/")
-def login():
+def index():
     return render_template("index.html")
 
+@app.route("/login")
+def login():
+    return 'OK', 200
+    
 @app.route("/register", methods=["POST", "GET"])
 def register():
     """Creates the user"""
@@ -26,3 +35,6 @@ def register():
         print(password)
     
     return render_template("register.html", name=name)
+
+if __name__ == "__main__":
+    main()
