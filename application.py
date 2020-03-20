@@ -24,13 +24,14 @@ def login():
         {"username": username, "password": password}).rowcount == 1:
         return render_template("success.html", message='Login successful!')
     else:
-        return render_template("error.html", message='Wrong username or password'), 403
+        return render_template("login.html", error_message='Wrong username or password'), 403
     
 @app.route("/register", methods=["POST", "GET"])
 def register():
     """Creates the user"""
-    #TODO Check if all form fields are being sent in the front-end
-    #TODO Return to login page or open app console
+    #TODO Hash the password in the backend.
+    #TODO Hash the password in the front-end.
+    #TODO Return to login page or open app console after successful registration.
 
     if request.method == "GET":
         if request.form.get("username"):
