@@ -1,4 +1,3 @@
-import os
 from flask import Flask, render_template, request
 import mydb
 import datetime
@@ -12,7 +11,9 @@ def main():
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    #TODO If has session, return index.html
+
+    return render_template("login.html")
 
 @app.route("/login", methods=["POST"])
 def login():

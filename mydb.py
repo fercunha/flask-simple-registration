@@ -1,3 +1,4 @@
+import os
 import sqlalchemy
 import sqlalchemy.dialects
 from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String, DateTime
