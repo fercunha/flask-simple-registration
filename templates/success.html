@@ -1,5 +1,11 @@
 {% extends "layout.html" %}
 
+{% block meta %}
+    {% if redirect %}
+        <meta http-equiv="refresh" content="3;url={{ url_for('index') }}" />
+    {% endif %}
+{% endblock %}
+
 {% block title %}
     Success
 {% endblock %}
@@ -8,5 +14,5 @@
         <h1>Success!</h1>
         <div class="alert alert-success" role="alert">
             {{ message }}
-          </div>
+        </div>
 {% endblock %}

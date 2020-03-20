@@ -31,17 +31,10 @@ def login():
                 return render_template("login.html", error_message='Wrong username or password'), 403
     else:
         return render_template("login.html", error_message='Duplicate user!'), 409
-
-    # if mydb.db.execute("SELECT * FROM users WHERE username = :username AND password = :password",
-    #     {"username": username, "password": password}).rowcount == 1:
-    #     return render_template("success.html", message='Login successful!')
-    # else:
-    #     return render_template("login.html", error_message='Wrong username or password'), 403
     
 @app.route("/register", methods=["POST", "GET"])
 def register():
     """Creates the user"""
-    #TODO Hash the password in the backend.
     #TODO Hash the password in the front-end.
     #TODO Return to login page or open app console after successful registration.
 
@@ -84,7 +77,7 @@ def register():
                 {"name": name, "lastname": lastname, "username": username, "password": password, "registration_date": str(registration_date)})
             mydb.db.commit()
             message = "User " + username + " registered successfully!"
-            return render_template("success.html", message=message)
+            return render_template("success.html", message=message, redirect=True)
         except:
             return render_template("error.html", message='Registration failed.'), 400
 
